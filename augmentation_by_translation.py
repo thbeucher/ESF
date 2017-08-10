@@ -14,27 +14,6 @@ langue = my_args.langue
 all_targets = ['af','ar' ,'zh' ,'hr' ,'cs' ,'da' ,'nl' ,'en' ,'et' ,'fi' ,'fr' ,'de' ,'el' ,'iw' ,'hi' ,'hu' ,'is' ,'id' ,'ga' ,'it' ,'ja' ,'ko' ,'la' ,'lt' ,'lb' ,'no' ,'pt' ,'ro' ,'ru' ,'sr' ,'sk' ,'sl' ,'es' ,'sv' ,'th' ,'tr' ,'uk' ,'vi']
 
 
-# target_chinois = 'zh'
-# target_anglais = 'en'
-# target_allemand = 'al'
-# targets = [target_chinois, target_anglais, target_allemand, 'it', 'ar', 'ja', 'la']
-
-
-# rephrases = []
-
-# for i in range(5):
-#   print('text: ', text)
-#   l_uses = [langue]
-#   for i in range(5):
-#     translation = text if i == 0 else text
-#     r = random.randint(0, len(targets) - 1)
-#     translation = mtranslate.translate(translation, targets[r], l_uses[-1]).lower()
-#     l_uses.append(targets[r])
-#   text = mtranslate.translate(translation, langue, l_uses[-1]).lower()
-#   rephrases.append(text)
-#   print("track: ", l_uses)
-#   print("==> ", text)
-
 # ========================= #
 # explore translation tracks
 TRACK_MIN_SIZE = 1
@@ -75,6 +54,29 @@ pickle.dump(store_good_tracks, open("stored_good_tracks", 'wb'))
 pickle.dump(store_bad_tracks, open("stored_bad_tracks", "wb"))
 # end of translation tracks exploration
 # ==================================== #
+
+
+
+# target_chinois = 'zh'
+# target_anglais = 'en'
+# target_allemand = 'al'
+# targets = [target_chinois, target_anglais, target_allemand, 'it', 'ar', 'ja', 'la']
+
+
+# rephrases = []
+
+# for i in range(5):
+#   print('text: ', text)
+#   l_uses = [langue]
+#   for i in range(5):
+#     translation = text if i == 0 else text
+#     r = random.randint(0, len(targets) - 1)
+#     translation = mtranslate.translate(translation, targets[r], l_uses[-1]).lower()
+#     l_uses.append(targets[r])
+#   text = mtranslate.translate(translation, langue, l_uses[-1]).lower()
+#   rephrases.append(text)
+#   print("track: ", l_uses)
+#   print("==> ", text)
 
 
 # good_track = ['fr', 'ar', 'zh', 'al', 'ja', 'fr']
