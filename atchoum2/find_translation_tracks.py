@@ -11,7 +11,7 @@ my_args.resolve_args()
 text = "Je m'appelle Henri" if my_args.text == '' else my_args.text
 langue = my_args.langue
 
-all_targets = ['af','ar' ,'zh' ,'hr' ,'cs' ,'da' ,'nl' ,'en' ,'et' ,'fi' ,'fr' ,'de' ,'el' ,'iw' ,'hi' ,'hu' ,'is' ,'id' ,'ga' ,'it' ,'ja' ,'ko' ,'la' ,'lt' ,'lb' ,'no' ,'pt' ,'ro' ,'ru' ,'sr' ,'sk' ,'sl' ,'es' ,'sv' ,'th' ,'tr' ,'uk' ,'vi']
+all_targets = ['af', 'ar', 'zh','hr', 'cs', 'da', 'nl', 'en', 'et', 'fi', 'fr', 'de', 'el', 'iw', 'hi', 'hu', 'is', 'id', 'ga', 'it', 'ja', 'ko', 'la', 'lt', 'lb', 'no', 'pt', 'ro', 'ru', 'sr', 'sk', 'sl', 'es', 'sv', 'th', 'tr', 'uk', 'vi']
 
 
 # ========================= #
