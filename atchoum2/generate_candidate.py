@@ -52,12 +52,11 @@ def main():
         if n_text == '':
           added = False
           break
-        print('new: ', n_text)
         if len(tool.check(n_text)) == 0:
-          print('--> Correct sentence')
+          print('--> Correct sentence generated: ', n_text)
           new_text.append(n_text)
         else:
-          print('--> Incorrect sentence')
+          print('--> Incorrect sentence generated: ', n_text)
       sizes.append(len(new_text))
       print('new element added (', sizes, ')')
     for i, el in enumerate(new_text):
