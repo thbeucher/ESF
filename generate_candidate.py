@@ -1,11 +1,14 @@
 import os
 import pickle
 import mtranslate
+import language_check
 
 from arg_hp import Args
 
 my_args = Args(text=(str, True))
 my_args.resolve_args()
+
+langue = 'fr-FR'
 
 
 def find_new_candidate(text, candidates, tracks):
@@ -25,6 +28,7 @@ def find_new_candidate(text, candidates, tracks):
 
 
 if os.path.isfile('stored_good_tracks'):
+  tool = language_check.LanguageTool(langue)
   tracks = pickle.load(open('stored_good_tracks', 'rb'))
   new_text = [my_args.text]
   sizes = [len(new_text)]
@@ -40,7 +44,11 @@ if os.path.isfile('stored_good_tracks'):
         added = False
         break
       print('new: ', n_text)
-      new_text.append(n_text)
+      if len(tool.check(n_text)) == 0:
+        print('--> Correct sentence')
+        new_text.append(n_text)
+      else:
+        print('--> Incorrect sentence')
     sizes.append(len(new_text))
     print('new element added (', sizes, ')')
   for i, el in enumerate(new_text):
