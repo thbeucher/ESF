@@ -32,15 +32,17 @@ if os.path.isfile('stored_good_tracks'):
     if i > 3:
       if sizes[-1] == sizes[-2] and sizes[-2] == sizes[-3]:
         break
-    text = new_text[-1]
+    text = new_text[i]
     added = True
     while added:
       n_text = find_new_candidate(text, new_text, tracks)
       if n_text == '':
         added = False
         break
+      print('new: ', n_text)
       new_text.append(n_text)
     sizes.append(len(new_text))
+    print('new element added (', sizes, ')')
   for i, el in enumerate(new_text):
     print('Candidate ', i, ': ', el)
 else:
