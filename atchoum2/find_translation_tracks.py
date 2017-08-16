@@ -14,6 +14,9 @@ langue = my_args.langue
 all_targets = ['af', 'ar', 'zh','hr', 'cs', 'da', 'nl', 'en', 'et', 'fi', 'fr', 'de', 'el', 'iw', 'hi', 'hu', 'is', 'id', 'ga', 'it', 'ja', 'ko', 'la', 'lt', 'lb', 'no', 'pt', 'ro', 'ru', 'sr', 'sk', 'sl', 'es', 'sv', 'th', 'tr', 'uk', 'vi']
 
 
+sentences = [el.strip('\n') for el in open('sentences', 'r').readlines()]
+
+
 # ========================= #
 # explore translation tracks
 TRACK_MIN_SIZE = 1
@@ -36,17 +39,19 @@ for i in range(5):
     test += 1
     finded = True if test > limit else False
 
-  text2 = text
-  # run the translation track
-  for i in range(len(my_track) - 1):
-    text2 = mtranslate.translate(text2, my_track[i+1], my_track[i])
-  # ask user if the translation is good or not
-  print("Text: ", text, "\n==> Rephrase: ", text2)
+  for text in sentences:
+    text2 = text
+    # run the translation track
+    for i in range(len(my_track) - 1):
+      text2 = mtranslate.translate(text2, my_track[i+1], my_track[i])
+    # ask user if the translation is good or not
+    print("Text: ", text, " ==> Rephrase: ", text2)
   rep = input('Is it ok for you? (y/n): ')
   if rep == 'y':
     store_good_tracks.append(my_track) if my_track not in store_good_tracks else 1
   elif rep == 'n':
     store_bad_tracks.append(my_track) if my_track not in store_bad_tracks else 1
+  print('\n\n')
 
 
 #save translation tracks
