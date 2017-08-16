@@ -109,7 +109,7 @@ def find_new_candidates(text, tracks):
   print('======> first generation <=======')
   first_gen_candidates = find_candidates(text, tracks)
   # clear doublon
-  first_gen_candidates = list(set(first_gen_candidates))
+  # first_gen_candidates = list(set(first_gen_candidates))
 
   # find all n+1 candidates ie find candidates from
   # the first generation
@@ -119,7 +119,7 @@ def find_new_candidates(text, tracks):
     second_gen = find_candidates(cand, tracks)
     second_gen_candidates.extend(second_gen)
   # clear doublon
-  second_gen_candidates = list(set(second_gen_candidates))
+  # second_gen_candidates = list(set(second_gen_candidates))
 
   # find all n+2 candidates
   print('======> third generation <=======')
@@ -168,8 +168,6 @@ def main():
     all_sd = compute_sd(new_text, text)
     # pareto to get best tradeoff between high syntactic diversity and low semantic divergence
     candidates = [(wmd, sd, sentence) for wmd, sd, sentence in zip(wmd_score, all_sd, new_text)]
-    for el in candidates:
-      print(el)
     final_candidates = pareto_iterative_peeling(candidates)
     final_candidates.sort(key=lambda tu: tu[0], reverse=True)
 
@@ -178,15 +176,16 @@ def main():
       f.write("Original sentence: " + text + "\n")
       for i, el in enumerate(candidates_ordered):
         print('Candidate ', i, ' (wmd = ', el[1], ' ) : ', el[0])
-        f.write('Candidate ' + str(i) + ' (wmd = ' + str(el[1]) + ' ) : ' + el[0])
+        f.write('Candidate ' + str(i) + ' (wmd = ' + str(el[1]) + ' ) : ' + el[0] + '\n')
       for i, el in enumerate(candidates_ordered2):
         print('Candidate ', i, ' (sm = ', el[1], ' ) : ', el[0])
-        f.write('Candidate ' + str(i) + ' (sm = ' + str(el[1]) + ' ) : ' + el[0])
+        f.write('Candidate ' + str(i) + ' (sm = ' + str(el[1]) + ' ) : ' + el[0] + '\n')
       for i, el in enumerate(candidates_ordered12):
         print('Candidate ', i, ' (wmd | sm  = ', el[1], ' | ', el[2],' ) : ', el[0])
-        f.write('Candidate ' + str(i) + ' (wmd | sm = ' + str(el[1]) + ' | ' + str(el[2]) + ' ) : ' + el[0])
+        f.write('Candidate ' + str(i) + ' (wmd | sm = ' + str(el[1]) + ' | ' + str(el[2]) + ' ) : ' + el[0] + '\n')
       for i, el in enumerate(final_candidates):
         print('Candidate ', i, ' (wmd | sd = ', el[0], ' | ', el[1], ' )', ' : ', el[2])
+        f.write('Candidate ' + str(i) + ' (wmd | sd = ' + str(el[0]) + ' | ' + str(el[1]) + ' )' + ' : ' + str(el[2]))
   else:
     print("No file store_good_tracks find!")
 
